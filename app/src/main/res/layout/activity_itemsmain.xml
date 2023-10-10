@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".itemsmain">
+    <LinearLayout
+        android:id="@+id/topLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="25dp"
+        android:layout_alignParentTop="true"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome, "
+            android:textSize="25dp"
+            >
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Daud"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="#F57C00"
+            >
+        </TextView>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topLinearLayout"
+        android:layout_above="@+id/bottomNavigationView"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Featured Items"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_marginLeft="25dp"
+                >
+            </TextView>
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:id="@+id/item1"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:background="@drawable/roundoutline"
+                        android:layout_margin="8dp">
+                        <ImageView
+                            android:layout_width="250dp"
+                            android:layout_height="150dp"
+                            android:contentDescription="Product Image"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/item" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="Item Name"
+                                android:textSize="18dp"
+                                android:gravity="left"
+                                android:singleLine="true"
+                                android:layout_margin="10dp"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="$10/hr"
+                                android:textSize="18dp"
+                                android:gravity="right"
+                                android:layout_margin="10dp"
+                                android:textColor="#FF5722" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="Islamabad"
+                                android:textSize="18dp"
+                                android:gravity="left"
+                                android:singleLine="true"
+                                android:layout_marginLeft="10dp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="7 Mar"
+                                android:textSize="18dp"
+                                android:gravity="right"
+                                android:singleLine="true"
+                                android:layout_marginRight="10dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/item2"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:background="@drawable/roundoutline"
+                        android:layout_margin="8dp">
+                        <ImageView
+                            android:layout_width="250dp"
+                            android:layout_height="150dp"
+                            android:contentDescription="Product Image"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/item" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="Item Name"
+                                android:textSize="18dp"
+                                android:gravity="left"
+                                android:singleLine="true"
+                                android:layout_margin="10dp"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="$10/hr"
+                                android:textSize="18dp"
+                                android:gravity="right"
+                                android:layout_margin="10dp"
+                                android:textColor="#FF5722" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="Islamabad"
+                                android:textSize="18dp"
+                                android:gravity="left"
+                                android:singleLine="true"
+                                android:layout_marginLeft="10dp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="7 Mar"
+                                android:textSize="18dp"
+                                android:gravity="right"
+                                android:singleLine="true"
+                                android:layout_marginRight="10dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Your Items"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_marginLeft="25dp"
+                >
+            </TextView>
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:id="@+id/item3"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:background="@drawable/roundoutline"
+                        android:layout_margin="8dp">
+                        <ImageView
+                            android:layout_width="250dp"
+                            android:layout_height="150dp"
+                            android:contentDescription="Product Image"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/item" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="Item Name"
+                                android:textSize="18dp"
+                                android:gravity="left"
+                                android:singleLine="true"
+                                android:layout_margin="10dp"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="$10/hr"
+                                android:textSize="18dp"
+                                android:gravity="right"
+                                android:layout_margin="10dp"
+                                android:textColor="#FF5722" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="Islamabad"
+                                android:textSize="18dp"
+                                android:gravity="left"
+                                android:singleLine="true"
+                                android:layout_marginLeft="10dp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="7 Mar"
+                                android:textSize="18dp"
+                                android:gravity="right"
+                                android:singleLine="true"
+                                android:layout_marginRight="10dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/item4"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:background="@drawable/roundoutline"
+                        android:layout_margin="8dp">
+                        <ImageView
+                            android:layout_width="250dp"
+                            android:layout_height="150dp"
+                            android:contentDescription="Product Image"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/item" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="Item Name"
+                                android:textSize="18dp"
+                                android:gravity="left"
+                                android:singleLine="true"
+                                android:layout_margin="10dp"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="$10/hr"
+                                android:textSize="18dp"
+                                android:gravity="right"
+                                android:layout_margin="10dp"
+                                android:textColor="#FF5722" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="Islamabad"
+                                android:textSize="18dp"
+                                android:gravity="left"
+                                android:singleLine="true"
+                                android:layout_marginLeft="10dp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:text="7 Mar"
+                                android:textSize="18dp"
+                                android:gravity="right"
+                                android:singleLine="true"
+                                android:layout_marginRight="10dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Recent Items"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_marginLeft="25dp"
+                >
+            </TextView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                >
+                <LinearLayout
+                    android:id="@+id/item5"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:background="@drawable/roundoutline"
+                    android:layout_margin="8dp">
+                    <ImageView
+                        android:layout_width="180dp"
+                        android:layout_height="150dp"
+                        android:contentDescription="Product Image"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/item" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Item Name"
+                            android:textSize="18dp"
+                            android:gravity="left"
+                            android:singleLine="true"
+                            android:layout_margin="5dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="$10/hr"
+                            android:textSize="18dp"
+                            android:gravity="right"
+                            android:layout_margin="5dp"
+                            android:textColor="#FF5722" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Islamabad"
+                            android:textSize="18dp"
+                            android:gravity="left"
+                            android:singleLine="true"
+                            android:layout_marginLeft="5dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="7 Mar"
+                            android:textSize="18dp"
+                            android:gravity="right"
+                            android:singleLine="true"
+                            android:layout_marginRight="5dp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/item6"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:background="@drawable/roundoutline"
+                    android:layout_margin="8dp">
+                    <ImageView
+                        android:layout_width="180dp"
+                        android:layout_height="150dp"
+                        android:contentDescription="Product Image"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/item" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Item Name"
+                            android:textSize="18dp"
+                            android:gravity="left"
+                            android:singleLine="true"
+                            android:layout_margin="5dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="$10/hr"
+                            android:textSize="18dp"
+                            android:gravity="right"
+                            android:layout_margin="5dp"
+                            android:textColor="#FF5722" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Islamabad"
+                            android:textSize="18dp"
+                            android:gravity="left"
+                            android:singleLine="true"
+                            android:layout_marginLeft="5dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="7 Mar"
+                            android:textSize="18dp"
+                            android:gravity="right"
+                            android:singleLine="true"
+                            android:layout_marginRight="5dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                >
+                <LinearLayout
+                    android:id="@+id/item7"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:background="@drawable/roundoutline"
+                    android:layout_margin="8dp">
+                    <ImageView
+                        android:layout_width="180dp"
+                        android:layout_height="150dp"
+                        android:contentDescription="Product Image"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/item" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Item Name"
+                            android:textSize="18dp"
+                            android:gravity="left"
+                            android:singleLine="true"
+                            android:layout_margin="5dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="$10/hr"
+                            android:textSize="18dp"
+                            android:gravity="right"
+                            android:layout_margin="5dp"
+                            android:textColor="#FF5722" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Islamabad"
+                            android:textSize="18dp"
+                            android:gravity="left"
+                            android:singleLine="true"
+                            android:layout_marginLeft="5dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="7 Mar"
+                            android:textSize="18dp"
+                            android:gravity="right"
+                            android:singleLine="true"
+                            android:layout_marginRight="5dp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/item8"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:background="@drawable/roundoutline"
+                    android:layout_margin="8dp">
+                    <ImageView
+                        android:layout_width="180dp"
+                        android:layout_height="150dp"
+                        android:contentDescription="Product Image"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/item" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Item Name"
+                            android:textSize="18dp"
+                            android:gravity="left"
+                            android:singleLine="true"
+                            android:layout_margin="5dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="$10/hr"
+                            android:textSize="18dp"
+                            android:gravity="right"
+                            android:layout_margin="5dp"
+                            android:textColor="#FF5722" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Islamabad"
+                            android:textSize="18dp"
+                            android:gravity="left"
+                            android:singleLine="true"
+                            android:layout_marginLeft="5dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="7 Mar"
+                            android:textSize="18dp"
+                            android:gravity="right"
+                            android:singleLine="true"
+                            android:layout_marginRight="5dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomNavigationView" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:padding="10dp"
+        android:layout_alignParentBottom="true"
+        android:background="#ffffff"
+        app:itemBackground="@null"
+        app:menu="@menu/bottommenu"
+        app:labelVisibilityMode="labeled"
+        style="@style/AppBottomNavigation"
+        >
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+</RelativeLayout>
