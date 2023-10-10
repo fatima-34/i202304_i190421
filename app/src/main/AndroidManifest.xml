@@ -34,7 +34,7 @@
             android:name=".peoplechat"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".last"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -44,7 +44,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".last"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".itemsmain"
