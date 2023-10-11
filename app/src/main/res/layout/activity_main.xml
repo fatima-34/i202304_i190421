@@ -68,6 +68,7 @@
                 android:hint="Enter email"
                 android:singleLine="true"
                 android:textSize="20dp"
+                android:id="@+id/email"
                 android:background="@drawable/roundcorner"
                 >
             </EditText>
@@ -89,6 +90,7 @@
                 android:hint="Enter password"
                 android:singleLine="true"
                 android:textSize="20dp"
+                android:id="@+id/pw"
                 android:background="@drawable/roundcorner"
                 >
             </EditText>

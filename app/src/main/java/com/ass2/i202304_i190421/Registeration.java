@@ -82,7 +82,7 @@ public class Registeration extends AppCompatActivity {
                                 });
                 reference.push().setValue(new User(name.getText().toString(), email.getText().toString(), contact.getText().toString()));
 
-                Intent intent = new Intent(Registeration.this, itemsmain.class);
+                Intent intent = new Intent(Registeration.this, EditProfile.class);
                 startActivity(intent);
                 finish();
             }
