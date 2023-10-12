@@ -54,6 +54,15 @@
                 android:scaleType="centerCrop" />
 
             <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/updateCP"
+                android:src="@drawable/cam"
+                android:layout_marginTop="-10dp"
+                android:layout_marginLeft="380dp"
+                android:clickable="true"/>
+
+            <ImageView
                 android:id="@+id/profilePic"
                 android:layout_width="120dp"
                 android:layout_marginLeft="20dp"
@@ -61,6 +70,14 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="-50dp"
                 android:src="@drawable/person1" />
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/updatePP"
+                android:src="@drawable/cam"
+                android:layout_marginTop="-30dp"
+                android:layout_marginLeft="120dp"
+                android:clickable="true"/>
 
             <TextView
                 android:layout_width="wrap_content"

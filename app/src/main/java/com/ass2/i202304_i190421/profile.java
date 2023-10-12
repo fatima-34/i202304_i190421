@@ -1,9 +1,11 @@
 package com.ass2.i202304_i190421;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +17,8 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class profile extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+    ImageView updatePP;
+    Uri selectedImage = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,8 @@ public class profile extends AppCompatActivity {
         LinearLayout item8 = findViewById(R.id.item8);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.profile);
+
+        updatePP = findViewById(R.id.updatePP);
 
         item1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +95,16 @@ public class profile extends AppCompatActivity {
             }
         });
 
+        updatePP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent, 200);
+            }
+        });
+
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")
             @Override
@@ -126,5 +142,13 @@ public class profile extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==200 & resultCode==RESULT_OK) {
+            selectedImage = data.getData();
+        }
     }
 }
