@@ -80,7 +80,7 @@ public class Registeration extends AppCompatActivity {
                                         Toast.makeText(Registeration.this,"Sign up Failed "+e.getMessage(),Toast.LENGTH_LONG).show();
                                     }
                                 });
-                reference.push().setValue(new User(name.getText().toString(), email.getText().toString(), contact.getText().toString()));
+                reference.push().setValue(new User(name.getText().toString(), email.getText().toString(), contact.getText().toString(), "https://static.vecteezy.com/system/resources/thumbnails/002/387/693/small/user-profile-icon-free-vector.jpg", "https://blog.hootsuite.com/wp-content/uploads/2022/12/Facebook-Cover-Photos-13.png"));
 
                 Intent intent = new Intent(Registeration.this, EditProfile.class);
                 startActivity(intent);

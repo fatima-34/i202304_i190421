@@ -10,11 +10,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class EditProfile extends AppCompatActivity {
     private ImageView backArrow;
     private Spinner countrySpinner;
     private Spinner citySpinner;
+    private TextView saveChanges;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -24,6 +26,7 @@ public class EditProfile extends AppCompatActivity {
 
         countrySpinner = findViewById(R.id.country);
         citySpinner = findViewById(R.id.city);
+        saveChanges = findViewById(R.id.savechanges);
 
         String[] countries = {"Pakistan", "US", "UK"};
         String[] cities = {"Islamabad", "Peshawar", "Lahore"};
@@ -65,6 +68,14 @@ public class EditProfile extends AppCompatActivity {
         backArrow = findViewById(R.id.backarrow);
 
         backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EditProfile.this, profile.class);
+                startActivity(intent);
+            }
+        });
+
+        saveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(EditProfile.this, profile.class);

@@ -1,14 +1,16 @@
 package com.ass2.i202304_i190421;
 
 public class User {
-    String name, email, contact;
+    String name, email, contact, profilePic, coverPic;
 
     public User() {}
 
-    public User(String name, String email, String contact) {
+    public User(String name, String email, String contact, String profilePic, String coverPic) {
         this.name = name;
         this.email = email;
         this.contact = contact;
+        this.profilePic = profilePic;
+        this.coverPic = coverPic;
     }
 
     public String getName() {
@@ -33,5 +35,21 @@ public class User {
 
     public void setContact(String contact) {
         this.contact = contact;
+    }
+
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
+    }
+
+    public String getCoverPic() {
+        return coverPic;
+    }
+
+    public void setCoverPic(String coverPic) {
+        this.coverPic = coverPic;
     }
 }

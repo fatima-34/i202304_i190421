@@ -9,4 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#F57C00</color>
     <color name="material_dynamic_neutral60">#RRGGBB</color>
+    <color name="theme_color">#2176FF</color>
+    <color name="theme_color_80">#CC2176FF</color>
+    <color name="theme_color_8">#142176FF</color>
+    <color name="light_8">#14000000</color>
 </resources>
