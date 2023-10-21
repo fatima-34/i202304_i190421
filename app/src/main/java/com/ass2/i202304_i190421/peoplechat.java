@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -19,9 +20,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class peoplechat extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
@@ -39,6 +43,8 @@ public class peoplechat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peoplechat);
+
+        final CircleImageView userProfilePic = findViewById(R.id.userProfilePic);
 
         messagesRecyclerView = findViewById(R.id.messagesRecyclerView);
 
@@ -61,9 +67,12 @@ public class peoplechat extends AppCompatActivity {
                 lastMessage = "";
                 chatKey = "";
 
-                for(DataSnapshot dataSnapshot : snapshot.child("users").getChildren()) {
+                for(DataSnapshot dataSnapshot : snapshot.child("user").getChildren()) {
 
                     final String getMobile = dataSnapshot.child("contact").getValue(String.class);
+                    String key = "-Ngo47SckaKysjnDn-iq";
+                    final String profilePicUrl = snapshot.child("user").child(key).child("profilePic").getValue(String.class);
+                    Picasso.get().load(profilePicUrl).into(userProfilePic);
 
                     dataSet = false;
 
