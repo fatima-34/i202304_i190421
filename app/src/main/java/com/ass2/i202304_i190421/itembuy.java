@@ -104,19 +104,6 @@ public class itembuy extends AppCompatActivity {
         postItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                mAuth.createUserWithEmailAndPassword(email.getText().toString(), name.getText().toString())
-//                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<AuthResult> task) {
-//                                Toast.makeText(itembuy.this,"Sign up Successful",Toast.LENGTH_LONG).show();
-//                            }
-//                        })
-//                        .addOnFailureListener(new OnFailureListener() {
-//                            @Override
-//                            public void onFailure(@NonNull Exception e) {
-//                                Toast.makeText(itembuy.this,"Sign up Failed "+e.getMessage(),Toast.LENGTH_LONG).show();
-//                            }
-//                        });
                 if(selectedImage != null) {
                     StorageReference storageReference = FirebaseStorage.getInstance().getReference();
                     storageReference = storageReference.child("abc/dp.jpg");

@@ -30,6 +30,7 @@ public class searchresults extends AppCompatActivity {
         LinearLayout item8 = findViewById(R.id.item8);
 
         bestMatchSpinner = findViewById(R.id.bestmatch);
+        backArrow = findViewById(R.id.backarrow);
 
         item1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,14 +101,11 @@ public class searchresults extends AppCompatActivity {
                 String selectedOption = (String) adapterView.getItemAtPosition(position);
 
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
-
-        backArrow = findViewById(R.id.backarrow);
 
         backArrow.setOnClickListener(new View.OnClickListener() {
             @Override

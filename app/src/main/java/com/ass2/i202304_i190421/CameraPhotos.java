@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 public class CameraPhotos extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

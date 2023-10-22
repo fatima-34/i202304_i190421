@@ -32,7 +32,6 @@ public class itemsmain extends AppCompatActivity {
         LinearLayout item7 = findViewById(R.id.item7);
         LinearLayout item8 = findViewById(R.id.item8);
 
-
         item1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

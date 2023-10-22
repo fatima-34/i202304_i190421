@@ -106,8 +106,6 @@ public class chat extends AppCompatActivity {
         //Picasso.get().load(getProfilePic).into(profilePic);
         //chattingRecyclerView.setHasFixedSize(true);
         chattingRecyclerView.setLayoutManager(new LinearLayoutManager(chat.this));
-
-
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {

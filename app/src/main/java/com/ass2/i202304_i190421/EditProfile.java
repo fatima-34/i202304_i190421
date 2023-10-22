@@ -8,15 +8,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class EditProfile extends AppCompatActivity {
     private ImageView backArrow;
     private Spinner countrySpinner;
     private Spinner citySpinner;
     private TextView saveChanges;
+    private EditText name, email, contact;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -27,9 +34,15 @@ public class EditProfile extends AppCompatActivity {
         countrySpinner = findViewById(R.id.country);
         citySpinner = findViewById(R.id.city);
         saveChanges = findViewById(R.id.savechanges);
+        name = findViewById(R.id.name);
+        email = findViewById(R.id.email);
+        contact = findViewById(R.id.contact);
 
         String[] countries = {"Pakistan", "US", "UK"};
         String[] cities = {"Islamabad", "Peshawar", "Lahore"};
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference usersReference = databaseReference.child("user");
 
         ArrayAdapter<String> countryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, countries);
         ArrayAdapter<String> cityAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, cities);
@@ -78,6 +91,16 @@ public class EditProfile extends AppCompatActivity {
         saveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Retrieve user inputs
+                String newName = name.getText().toString();
+                String newEmail = email.getText().toString();
+                String newContact = contact.getText().toString();
+
+                String userId = "-Ngo47SckaKysjnDn-iq";
+                databaseReference.child("user").child(userId).child("name").setValue(newName);
+                databaseReference.child("user").child(userId).child("email").setValue(newEmail);
+                databaseReference.child("user").child(userId).child("contact").setValue(newContact);
+
                 Intent intent = new Intent(EditProfile.this, profile.class);
                 startActivity(intent);
             }

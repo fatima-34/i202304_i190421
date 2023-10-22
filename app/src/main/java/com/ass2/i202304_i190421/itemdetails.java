@@ -21,7 +21,6 @@ public class itemdetails extends AppCompatActivity {
         ImageView chat = findViewById(R.id.chat);
         Button rentit = findViewById(R.id.rentit);
 
-
         backarrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

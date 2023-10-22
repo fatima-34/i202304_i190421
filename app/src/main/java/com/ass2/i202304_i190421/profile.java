@@ -11,14 +11,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class profile extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-    ImageView updatePP;
-    Uri selectedImage = null;
+    ImageView updatePP, updateCP;
+    Uri PPImage = null, CPImage = null, selectedImage=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +40,11 @@ public class profile extends AppCompatActivity {
         LinearLayout item8 = findViewById(R.id.item8);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.profile);
-
+        updateCP = findViewById(R.id.updateCP);
         updatePP = findViewById(R.id.updatePP);
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference usersReference = databaseReference.child("user");
 
         item1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,12 +98,57 @@ public class profile extends AppCompatActivity {
         editImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (selectedImage != null) {
+                    Toast.makeText(profile.this, "Image selected.", Toast.LENGTH_LONG).show();
+                    // Get a reference to the Firebase Storage
+                    StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+
+                    // Create a unique reference for the user's profile picture
+                    String userId = "-Ngo47SckaKysjnDn-iq";
+                    StorageReference profilePicRef = storageReference.child("profileImages").child(userId + ".jpg");
+
+                    // Upload the selected image to Firebase Storage
+                    profilePicRef.putFile(selectedImage)
+                            .addOnSuccessListener(taskSnapshot -> {
+                                Toast.makeText(profile.this, "Image succesfully uplaoded", Toast.LENGTH_LONG).show();
+                                // Get the download URL of the uploaded image
+                                profilePicRef.getDownloadUrl()
+                                        .addOnSuccessListener(uri -> {
+                                            // URL of the uploaded image
+                                            String profilePicUrl = uri.toString();
+
+                                            // Update the profilePic field in the Realtime Database
+                                            DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("user").child(userId);
+                                            userReference.child("profilePic").setValue(profilePicUrl);
+
+                                            // Reset the selected image to null
+                                            selectedImage = null;
+                                        });
+                            })
+                            .addOnFailureListener(e -> {
+                                Toast.makeText(profile.this, "Failed to upload the Image.", Toast.LENGTH_LONG).show();
+                            });
+                } else {
+                    Toast.makeText(profile.this, "No image is selected.", Toast.LENGTH_LONG).show();
+                }
+
                 Intent intent = new Intent(profile.this, EditProfile.class);
                 startActivity(intent);
             }
         });
 
         updatePP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Check if an image is selected
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent, 200);
+            }
+        });
+
+        updateCP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
