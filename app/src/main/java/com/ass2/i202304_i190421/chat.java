@@ -89,8 +89,10 @@ public class chat extends AppCompatActivity {
         cameraImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(chat.this, CameraPhotos.class);
-                startActivity(intent);
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent, 200);
             }
         });
 

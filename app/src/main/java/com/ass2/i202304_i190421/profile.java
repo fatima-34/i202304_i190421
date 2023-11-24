@@ -9,9 +9,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.onesignal.Continue;
+import com.onesignal.OneSignal;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -24,11 +28,29 @@ public class profile extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     ImageView updatePP, updateCP;
     Uri PPImage = null, CPImage = null, selectedImage=null;
+    private static final String ONESIGNAL_APP_ID = "80ca0b6f-3abd-4c19-afbe-82b1d0afc6783";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        OneSignal.initWithContext(this, ONESIGNAL_APP_ID);
+
+        // Request notification permissions (if needed)
+        OneSignal.getNotifications().requestPermission(true, Continue.with(r -> {
+            if (r.isSuccess()) {
+                if (r.getData()) {
+                    // `requestPermission` completed successfully and the user has accepted permission
+                }
+                else {
+                    // `requestPermission` completed successfully but the user has rejected permission
+                }
+            }
+            else {
+                // `requestPermission` completed unsuccessfully, check `r.getThrowable()` for more info on the failure reason
+            }
+        }));
 
         ImageView editImageView = findViewById(R.id.edit);
         LinearLayout item1 = findViewById(R.id.item1);
@@ -134,6 +156,16 @@ public class profile extends AppCompatActivity {
 
                 Intent intent = new Intent(profile.this, EditProfile.class);
                 startActivity(intent);
+            }
+        });
+
+        Button button=findViewById(R.id.notification);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Define notification content
+                String id = OneSignal.getUser().getPushSubscription().getId();
+                Toast.makeText(profile.this, id, Toast.LENGTH_LONG).show();
             }
         });
 

@@ -97,13 +97,6 @@
                 android:gravity="center"
                 android:layout_margin="10dp"
                 >
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/location"
-                    android:layout_weight="0.3"
-                    >
-                </ImageView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -122,6 +115,12 @@
                     android:layout_weight="0.5"
                     android:text="24 items rented">
                 </TextView>
+                <Button
+                    android:id="@+id/notification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Notify"
+                    android:textSize="10dp"/>
             </LinearLayout>
 
             <TextView

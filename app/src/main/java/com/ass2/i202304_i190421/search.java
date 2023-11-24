@@ -1,34 +1,88 @@
 package com.ass2.i202304_i190421;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import java.util.ArrayList;
 
 public class search extends AppCompatActivity {
+
     BottomNavigationView bottomNavigationView;
+    private RecyclerView recyclerView;
+    private searchAdapter searchAdapter;
+    private ArrayList<Items> itemList;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        ImageView item1 = findViewById(R.id.item1);
-        ImageView item2 = findViewById(R.id.item2);
-        ImageView item3 = findViewById(R.id.item3);
-        ImageView item4 = findViewById(R.id.item4);
-        ImageView item5 = findViewById(R.id.item5);
-        ImageView item6 = findViewById(R.id.item6);
-        ImageView item7 = findViewById(R.id.item7);
+        recyclerView = findViewById(R.id.recyclerView);
+        itemList = new ArrayList<>();
+        searchAdapter = new searchAdapter(itemList);
 
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+        // Initialize Firebase database reference
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("FeaturedItems");
+
+        // Retrieve data from Firebase and populate the itemList
+        databaseReference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Items item = snapshot.getValue(Items.class);
+                itemList.add(item);
+
+                searchAdapter = new searchAdapter(itemList);
+                recyclerView.setAdapter(searchAdapter);
+                searchAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        Log.d("FirebaseData", "Data retrieved: " + itemList.size() + " items.");
+        bottomNavigationView = findViewById(R.id.bottom_navigation_bar);
         bottomNavigationView.setSelectedItemId(R.id.search);
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -68,55 +122,30 @@ public class search extends AppCompatActivity {
                 return false;
             }
         });
-
-        item1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(search.this, searchresults.class);
-                startActivity(intent);
-            }
-        });
-        item2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(search.this, searchresults.class);
-                startActivity(intent);
-            }
-        });
-        item3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(search.this, searchresults.class);
-                startActivity(intent);
-            }
-        });
-        item4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(search.this, searchresults.class);
-                startActivity(intent);
-            }
-        });
-        item5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(search.this, searchresults.class);
-                startActivity(intent);
-            }
-        });
-        item6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(search.this, searchresults.class);
-                startActivity(intent);
-            }
-        });
-        item7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(search.this, searchresults.class);
-                startActivity(intent);
-            }
-        });
     }
-}
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_search, menu);
+
+            MenuItem searchItem = menu.findItem(R.id.action_search); // Use the correct item ID
+            SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        // Handle search submit if needed
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        searchAdapter.getFilter().filter(newText);
+                        return true;
+                    }
+                });
+
+                return true;
+            }
+    }
